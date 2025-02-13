@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>عيد حب سعيد</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
@@ -18,110 +18,69 @@
 
     .container {
       max-width: 100%;
-      margin: 0 auto;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    }
-
-    h1 {
-      color: #e91e63;
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-
-    .content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: wrap;
+      margin: 20px auto;
       padding: 10px;
     }
 
-    .image-container {
-      flex: 1;
-      position: relative;
-      width: 100%;
+    /* تصميم البطاقة التي تضم الصورة والنص كطبقة واحدة */
+    .card {
       max-width: 350px;
-    }
-
-    .image-container img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .text-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 15px;
-      background: #fff;
+      margin: 0 auto;
       border: 3px solid #e91e63;
       border-radius: 15px;
-      box-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
-      text-align: center;
-      width: 80%;
-      max-width: 300px;
-      z-index: 1;
+      overflow: hidden; /* لضمان تماسك الحواف */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background-color: #fff;
+    }
+
+    .card img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* قسم النص مع خلفية مزخرفة (يمكنك استبدال رابط الصورة بنمط عيد الحب الخاص بك) */
+    .text-content {
+      padding: 15px;
       font-size: 1.2em;
       color: #444;
+      /* مثال لخلفية بنمط قلوب - تأكد من توفر الصورة أو استبدلها */
+      background: url('your-heart-pattern.png') center center / cover no-repeat;
+    }
+
+    .text-content p {
+      margin: 0;
+      line-height: 1.6;
     }
 
     .hearts {
       font-size: 2em;
       color: #e91e63;
-      margin-top: 15px;
-    }
-
-    .image-container::before {
-      content: " ";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('your-heart-pattern.png') repeat;
-      background-size: cover;
-      border-radius: 10px;
-      z-index: 0;
-      filter: blur(3px);
+      margin-top: 10px;
     }
 
     @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
+      .card {
+        max-width: 90%;
       }
-      .content {
-        flex-direction: column;
-      }
-      .text-container {
-        width: 90%;
+      .text-content {
+        font-size: 1em;
       }
     }
   </style>
 </head>
 <body>
-
   <div class="container">
     <h1>عيد حب سعيد</h1>
-    
-    <div class="content">
-      <!-- الصورة في المنتصف -->
-      <div class="image-container">
-        <img src="your-image.jpg" alt="صورة رومانسية">
-        <div class="text-container">
-          <p>
-            إلى [اسمها]،<br>
-            رغم الظروف التي حالت بيننا، تظل مشاعري صادقة ونابعة من القلب.<br>
-            أتمنى أن ينير هذا الموقع قلبك ويذكرك بأن الحب الحقيقي لا يموت.
-          </p>
-          <div class="hearts">❤❤❤</div>
-        </div>
+    <div class="card">
+      <img src="your-image.jpg" alt="صورة رومانسية">
+      <div class="text-content">
+        <p>
+          إلى [اسمها]،<br>
+          رغم الظروف التي حالت بيننا، تظل مشاعري صادقة ونابعة من القلب.<br>
+          أتمنى أن ينير هذا الموقع قلبك ويذكرك بأن الحب الحقيقي لا يموت.
+        </p>
+        <div class="hearts">❤❤❤</div>
       </div>
     </div>
   </div>
@@ -129,6 +88,5 @@
   <audio id="audio" autoplay loop>
     <source src="your-song.mp3" type="audio/mpeg">
   </audio>
-
 </body>
 </html>
