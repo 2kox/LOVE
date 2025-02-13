@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>عيد حب سعيد</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
@@ -11,14 +11,14 @@
       margin: 0;
       padding: 0;
       font-family: 'Cairo', sans-serif;
-      text-align: center;
       direction: rtl;
       background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+      text-align: center;
     }
 
     .container {
-      max-width: 90%;
-      margin: 50px auto;
+      max-width: 100%;
+      margin: 0 auto;
       padding: 20px;
       background: rgba(255, 255, 255, 0.9);
       border-radius: 15px;
@@ -28,50 +28,80 @@
     h1 {
       color: #e91e63;
       font-size: 2.5em;
+      margin-bottom: 10px;
     }
 
-    p {
-      font-size: 1.3em;
-      line-height: 1.6;
-      color: #333;
-      margin: 20px 0;
-    }
-
-    .heart {
-      font-size: 2em;
-      color: #e91e63;
-      margin: 0 5px;
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      padding: 10px;
     }
 
     .image-container {
+      flex: 1;
+      position: relative;
       width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+      max-width: 350px;
     }
 
     .image-container img {
-      width: 90%;
-      max-width: 350px;
+      width: 100%;
+      height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    .button {
-      background-color: #e91e63;
-      border: none;
-      color: #fff;
-      padding: 10px 20px;
+    .text-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 15px;
+      background: #fff;
+      border: 3px solid #e91e63;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
+      text-align: center;
+      width: 80%;
+      max-width: 300px;
+      z-index: 1;
       font-size: 1.2em;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s;
+      color: #444;
     }
 
-    .button:hover {
-      background-color: #d81b60;
+    .hearts {
+      font-size: 2em;
+      color: #e91e63;
+      margin-top: 15px;
+    }
+
+    .image-container::before {
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('your-heart-pattern.png') repeat;
+      background-size: cover;
+      border-radius: 10px;
+      z-index: 0;
+      filter: blur(3px);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+      .content {
+        flex-direction: column;
+      }
+      .text-container {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -79,40 +109,26 @@
 
   <div class="container">
     <h1>عيد حب سعيد</h1>
-    <p>
-      إلى [اسمها]،<br>
-      رغم الظروف التي حالت بيننا، تظل مشاعري صادقة ونابعة من القلب.<br>
-      أتمنى أن ينير هذا الموقع قلبك ويذكرك بأن الحب الحقيقي لا يموت.
-    </p>
-
-    <div class="image-container">
-      <img src="your-image1.jpg" alt="صورة رومانسية">
+    
+    <div class="content">
+      <!-- الصورة في المنتصف -->
+      <div class="image-container">
+        <img src="your-image.jpg" alt="صورة رومانسية">
+        <div class="text-container">
+          <p>
+            إلى [اسمها]،<br>
+            رغم الظروف التي حالت بيننا، تظل مشاعري صادقة ونابعة من القلب.<br>
+            أتمنى أن ينير هذا الموقع قلبك ويذكرك بأن الحب الحقيقي لا يموت.
+          </p>
+          <div class="hearts">❤❤❤</div>
+        </div>
+      </div>
     </div>
-
-    <div>
-      <span class="heart">❤</span>
-      <span class="heart">❤</span>
-      <span class="heart">❤</span>
-    </div>
-
-    <button class="button" id="playButton">تشغيل الموسيقى</button>
-    <audio id="audio" src="your-song.mp3"></audio>
   </div>
 
-  <script>
-    const audio = document.getElementById('audio');
-    const playButton = document.getElementById('playButton');
-
-    playButton.addEventListener('click', () => {
-      if(audio.paused) {
-        audio.play();
-        playButton.textContent = 'إيقاف الموسيقى';
-      } else {
-        audio.pause();
-        playButton.textContent = 'تشغيل الموسيقى';
-      }
-    });
-  </script>
+  <audio id="audio" autoplay loop>
+    <source src="your-song.mp3" type="audio/mpeg">
+  </audio>
 
 </body>
 </html>
