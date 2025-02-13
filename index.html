@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>عيد حب سعيد</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+      text-align: center;
+      direction: rtl;
+      background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+    }
+
+    .container {
+      max-width: 90%;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 2.5em;
+    }
+
+    p {
+      font-size: 1.3em;
+      line-height: 1.6;
+      color: #333;
+      margin: 20px 0;
+    }
+
+    .heart {
+      font-size: 2em;
+      color: #e91e63;
+      margin: 0 5px;
+    }
+
+    .image-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .image-container img {
+      width: 90%;
+      max-width: 350px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .button {
+      background-color: #e91e63;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #d81b60;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>عيد حب سعيد</h1>
+    <p>
+      إلى [اسمها]،<br>
+      رغم الظروف التي حالت بيننا، تظل مشاعري صادقة ونابعة من القلب.<br>
+      أتمنى أن ينير هذا الموقع قلبك ويذكرك بأن الحب الحقيقي لا يموت.
+    </p>
+
+    <div class="image-container">
+      <img src="your-image1.jpg" alt="صورة رومانسية">
+    </div>
+
+    <div>
+      <span class="heart">❤</span>
+      <span class="heart">❤</span>
+      <span class="heart">❤</span>
+    </div>
+
+    <button class="button" id="playButton">تشغيل الموسيقى</button>
+    <audio id="audio" src="your-song.mp3"></audio>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const playButton = document.getElementById('playButton');
+
+    playButton.addEventListener('click', () => {
+      if(audio.paused) {
+        audio.play();
+        playButton.textContent = 'إيقاف الموسيقى';
+      } else {
+        audio.pause();
+        playButton.textContent = 'تشغيل الموسيقى';
+      }
+    });
+  </script>
+
+</body>
+</html>
