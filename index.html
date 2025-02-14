@@ -14,21 +14,27 @@
       direction: rtl;
       background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
       text-align: center;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: all 0.5s ease-in-out;
     }
 
     .container {
       max-width: 100%;
-      margin: 20px auto;
       padding: 10px;
+      display: none; /* يخفي المحتوى حتى يُفتح الظرف */
     }
 
-    /* تصميم البطاقة التي تضم الصورة والنص كطبقة واحدة */
     .card {
       max-width: 350px;
       margin: 0 auto;
       border: 3px solid #e91e63;
       border-radius: 15px;
-      overflow: hidden; /* لضمان تماسك الحواف */
+      overflow: hidden;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       background-color: #fff;
     }
@@ -39,12 +45,10 @@
       height: auto;
     }
 
-    /* قسم النص مع خلفية مزخرفة (يمكنك استبدال رابط الصورة بنمط عيد الحب الخاص بك) */
     .text-content {
       padding: 15px;
       font-size: 1.2em;
       color: #444;
-      /* مثال لخلفية بنمط قلوب - تأكد من توفر الصورة أو استبدلها */
       background: url('your-heart-pattern.png') center center / cover no-repeat;
     }
 
@@ -53,44 +57,116 @@
       line-height: 1.6;
     }
 
-    .hearts {
-      font-size: 2em;
-      color: #e91e63;
-      margin-top: 10px;
+    /* تصميم الظرف */
+    .envelope {
+      position: relative;
+      width: 250px;
+      height: 180px;
+      background: #e91e63;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transition: transform 0.5s ease-in-out;
+      text-align: center;
     }
 
-    @media (max-width: 768px) {
-      .card {
-        max-width: 90%;
-      }
-      .text-content {
-        font-size: 1em;
-      }
+    .envelope::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      width: 0;
+      height: 0;
+      border-left: 125px solid transparent;
+      border-right: 125px solid transparent;
+      border-bottom: 60px solid #e91e63;
+      transition: all 0.5s ease-in-out;
     }
+
+    .envelope .heart {
+      font-size: 30px;
+      color: white;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .envelope .message {
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      padding: 10px;
+    }
+
+    /* عند الفتح */
+    .open .envelope {
+      transform: scale(0);
+    }
+
+    .open .container {
+      display: block;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* جعل الصفحة قابلة للتمرير بعد فتح الظرف */
+    .open body {
+      overflow: auto;
+      height: auto;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- الظرف -->
+  <div class="envelope" id="envelope">
+    <div class="heart">❤️</div>
+    <div class="message">لدي شيء خاص لكِ...</div>
+  </div>
+
+  <!-- المحتوى المخفي -->
   <div class="container">
-    <h1> 𝓗𝓪𝓹𝓹𝔂 𝓥𝓪𝓵𝓮𝓷𝓽𝓲𝓷𝓮'𝓼 𝓓𝓪𝔂  </h1>
+    <h1>𝓗𝓪𝓹𝓹𝔂 𝓥𝓪𝓵𝓮𝓷𝓽𝓲𝓷𝓮'𝓼 𝓓𝓪𝔂</h1>
     <div class="card">
       <img src="your-image.jpg" alt="صورة رومانسية">
       <div class="text-content">
         <p>
           إلى نوران،<br>
-          
-رغم الظروف التي حالت بيننا، تظل مشاعري صادقة ونابعة من القلب.
-أحببتكِ بصدق، وما زلت أحبكِ، ليس لأننا معًا، ولكن لأنكِ جزء مني.
-لا أريد أن أُثقل عليكِ أو أجعلكِ حائرة، لكني أريدكِ أن تعرفي أن الحب الصادق لا يضيع،
-وأنكِ دائمًا في دعائي بأن تكوني سعيدة، سواء جمعتنا الأيام من جديد أو بقيتِ ذكرى جميلة محفورة في قلبي.
-أتمنى لكِ كل السعادة والراحة في حياتكِ، فأنتِ تستحقين كل شيء جميل.
+          رغم الظروف التي حالت بيننا، تظل مشاعري صادقة ونابعة من القلب.
+          أحببتكِ بصدق، وما زلت أحبكِ، ليس لأننا معًا، ولكن لأنكِ جزء مني.
+          لا أريد أن أُثقل عليكِ أو أجعلكِ حائرة، لكني أريدكِ أن تعرفي أن الحب الصادق لا يضيع،
+          وأنكِ دائمًا في دعائي بأن تكوني سعيدة، سواء جمعتنا الأيام من جديد أو بقيتِ ذكرى جميلة محفورة في قلبي.
+          أتمنى لكِ كل السعادة والراحة في حياتكِ، فأنتِ تستحقين كل شيء جميل.
         </p>
-        
       </div>
     </div>
   </div>
 
-  <audio id="audio" autoplay loop>
+  <audio id="audio" loop>
     <source src="your-song.mp3" type="audio/mpeg">
   </audio>
+
+  <script>
+    document.getElementById("envelope").addEventListener("click", function() {
+      document.body.classList.add("open");
+      document.getElementById("audio").play();
+      document.body.style.overflow = "auto"; // يتيح التمرير بعد الفتح
+    });
+  </script>
+
 </body>
 </html>
