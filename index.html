@@ -20,14 +20,14 @@
       align-items: center;
       flex-direction: column;
       transition: all 0.5s ease-in-out;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* تدرج لوني ناعم */
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       background-attachment: fixed;
     }
 
     .container {
       max-width: 100%;
       padding: 10px;
-      display: none; /* يخفي المحتوى حتى يُفتح الظرف */
+      display: none;
     }
 
     .card {
@@ -58,7 +58,6 @@
       line-height: 1.6;
     }
 
-    /* تصميم الظرف */
     .envelope {
       position: relative;
       width: 250px;
@@ -108,7 +107,6 @@
       padding: 10px;
     }
 
-    /* عند الفتح */
     .open .envelope {
       transform: scale(0);
     }
@@ -123,23 +121,34 @@
       to { opacity: 1; }
     }
 
-    /* جعل الصفحة قابلة للتمرير بعد فتح الظرف */
     .open body {
       overflow: auto;
       height: auto;
     }
 
-    /* تحسين عنوان "Happy Valentine's Day" */
-    h1 {
-      font-size: 2.5em;
+    /* تعديل العنوان ليكون بسطر واحد */
+    .heart-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .heart-title {
+      font-size: 1.5em;
       color: #e91e63;
-      padding: 15px;
-      border: 3px solid #e91e63;
-      border-radius: 15px;
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.9);
       font-weight: bold;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      height: auto;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      white-space: nowrap;
     }
 
   </style>
@@ -154,7 +163,9 @@
 
   <!-- المحتوى المخفي -->
   <div class="container">
-    <h1>𝓗𝓪𝓹𝓹𝔂 𝓥𝓪𝓵𝓮𝓷𝓽𝓲𝓷𝓮'𝓼 𝓓𝓪𝔂</h1>
+    <div class="heart-container">
+      <div class="heart-title">𝓗𝓪𝓹𝓹𝔂 𝓥𝓪𝓵𝓮𝓷𝓽𝓲𝓷𝓮'𝓼 𝓓𝓪𝔂</div>
+    </div>
     <div class="card">
       <img src="your-image.jpg" alt="صورة رومانسية">
       <div class="text-content">
@@ -178,7 +189,7 @@
     document.getElementById("envelope").addEventListener("click", function() {
       document.body.classList.add("open");
       document.getElementById("audio").play();
-      document.body.style.overflow = "auto"; // يتيح التمرير بعد الفتح
+      document.body.style.overflow = "auto";
     });
   </script>
 
