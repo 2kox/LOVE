@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>عيد حب سعيد</title>
+  <title>𝓗𝓪𝓹𝓹𝔂 𝓥𝓪𝓵𝓮𝓷𝓽𝓲𝓷𝓮'𝓼 𝓓𝓪𝔂</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
@@ -27,7 +27,7 @@
     .container {
       max-width: 100%;
       padding: 10px;
-      display: none;
+      display: none; /* يخفي المحتوى حتى يُفتح الظرف */
     }
 
     .card {
@@ -47,17 +47,18 @@
     }
 
     .text-content {
-      padding: 15px;
-      font-size: 1em; /* تصغير حجم الخط */
+      padding: 10px;
+      font-size: 1.1em; /* تصغير حجم النص قليلاً */
       color: #444;
       background: url('your-heart-pattern.png') center center / cover no-repeat;
     }
 
     .text-content p {
       margin: 0;
-      line-height: 1.5; /* تقليل المسافة بين الأسطر */
+      line-height: 1.5;
     }
 
+    /* تصميم الظرف */
     .envelope {
       position: relative;
       width: 250px;
@@ -107,6 +108,7 @@
       padding: 10px;
     }
 
+    /* عند الفتح */
     .open .envelope {
       transform: scale(0);
     }
@@ -121,12 +123,13 @@
       to { opacity: 1; }
     }
 
+    /* جعل الصفحة قابلة للتمرير بعد فتح الظرف */
     .open body {
       overflow: auto;
       height: auto;
     }
 
-    /* تعديل العنوان ليكون بسطر واحد */
+    /* تصميم العنوان مع الإطار الأحمر */
     .heart-container {
       display: flex;
       justify-content: center;
@@ -134,19 +137,13 @@
     }
 
     .heart-title {
-      font-size: 1.5em;
+      font-size: 1.3em; /* تصغير حجم العنوان */
       color: #e91e63;
       padding: 10px 20px;
       background: rgba(255, 255, 255, 0.9);
       font-weight: bold;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: auto;
-      height: auto;
-      text-align: center;
-      border-radius: 20px;
+      border: 3px solid #e91e63; /* إضافة الإطار الأحمر */
+      border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       white-space: nowrap;
     }
@@ -189,7 +186,7 @@
     document.getElementById("envelope").addEventListener("click", function() {
       document.body.classList.add("open");
       document.getElementById("audio").play();
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "auto"; // يتيح التمرير بعد الفتح
     });
   </script>
 
